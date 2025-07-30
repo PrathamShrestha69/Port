@@ -13,7 +13,7 @@ const Navbar = () => {
             {/* name */}
             <Link
               to="/"
-              className="font-playwrite-pl font-extrabold text-2xl text-slate-800 transition hover:text-teal-600"
+              className="font-playwrite-pl font-extrabold text-2xl text-slate-800 transition hover:text-teal-600 text-flicker-in-glow-normal hover:text-flicker-in-glow-normal "
             >
               Pratham Shrestha
             </Link>
