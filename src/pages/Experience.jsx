@@ -1,7 +1,7 @@
 import React from "react";
 
 const Experience = () => {
-  return <div className="lg:px-20">Experience</div>;
+  return <div className="">Experience</div>;
 };
 
 export default Experience;

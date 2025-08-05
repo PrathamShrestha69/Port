@@ -3,17 +3,20 @@ import "../index.css";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import navlinks from "../constant/navlinks";
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <header className="sticky top-0 z-2 backdrop-blur-md">
-        <nav className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
+      <header className="sticky top-20 mt-4 z-50 bg-transparent backdrop-blur-md border-none shadow-none rounded-2xl">
+        <nav className="mx-auto max-w-7xl sm:px-6 lg:px-6">
+          <div className="flex h-20 items-center justify-between px-3">
             {/* name */}
             <Link
               to="/"
-              className="font-playwrite-pl font-extrabold text-2xl text-slate-800 transition hover:text-teal-600 text-flicker-in-glow-normal hover:text-flicker-in-glow-normal "
+              className="font-playwrite-pl font-extrabold text-2xl  text-slate-800 transition hover:text-teal-600 text-flicker-in-glow-normal hover:text-flicker-in-glow-normal cursor-target"
+              onClick={() => setOpen(!open)}
             >
               Pratham Shrestha
             </Link>
@@ -21,36 +24,15 @@ const Navbar = () => {
             {/* Desktop */}
             <ul className="hidden md:flex items-center space-x-8 font-intel">
               <li>
-                <Link
-                  to="/"
-                  className="text-lg font-semibold  text-slate-700 transition-colors hover:bg-[#87f8e9] rounded-3xl p-3"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/project"
-                  className="text-lg font-semibold  text-slate-700 transition-colors hover:bg-[#87f8e9] rounded-3xl p-3"
-                >
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/exp"
-                  className="text-lg font-semibold  text-slate-700 transition-colors hover:bg-[#87f8e9] rounded-3xl p-3"
-                >
-                  Experience
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-lg font-semibold  text-slate-700 transition-colors hover:bg-[#87f8e9] rounded-3xl p-3"
-                >
-                  Contact
-                </Link>
+                {navlinks.map((item, index) => (
+                  <Link
+                    key={item.name}
+                    to={item.to}
+                    className="text-lg font-semibold  text-slate-700 transition-colors rounded-3xl px-5 cursor-target"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
               </li>
             </ul>
 
@@ -69,43 +51,16 @@ const Navbar = () => {
           {open && (
             <ul className="md:hidden pb-4 space-x-2 font-intel">
               <li>
-                <Link
-                  onClick={() => setOpen(false)}
-                  to="/"
-                  className="block px-3 py-2 rounded-md tet-base font-medium text-slate-700"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  onClick={() => setOpen(false)}
-                  to="/project"
-                  className="block px-3 py-2 rounded-md tet-base font-medium text-slate-700"
-                >
-                  {" "}
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  onClick={() => setOpen(false)}
-                  to="/exp"
-                  className="block px-3 py-2 rounded-md tet-base font-medium text-slate-700"
-                >
-                  {" "}
-                  Experience
-                </Link>
-              </li>
-              <li>
-                <Link
-                  onClick={() => setOpen(false)}
-                  to="/contact"
-                  className="block px-3 py-2 rounded-md tet-base font-medium text-slate-700"
-                >
-                  {" "}
-                  Contact
-                </Link>
+                {navlinks.map((item, index) => (
+                  <Link
+                    key={item.name}
+                    to={item.to}
+                    className="block px-3 py-2 rounded-md tet-base font-medium text-slate-700"
+                    onClick={() => setOpen(!open)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
               </li>
             </ul>
           )}
