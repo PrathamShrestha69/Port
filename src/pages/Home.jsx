@@ -76,7 +76,7 @@ const Home = () => {
           Pratham Shrestha
         </h1>
       </div>
-      <div className="relative font-intel text-xl py-12 lg:py-28 text text-shadow-2xs font-semibold">
+      <div className="relative font-intel text-xl py-12 lg:py-28 text text-shadow-2xs font-semibold text-justify">
         A passionate front-end developer who thrives on turning ideas into
         sleek, interactive, and responsive web experiences. I specialize in
         modern tools like React, Tailwind CSS, and GSAP, with a strong eye for

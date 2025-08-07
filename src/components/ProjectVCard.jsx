@@ -1,57 +1,78 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
+import "../index.css";
 
-const ProjectVCard = () => {
+const ProjectVCard = ({
+  image,
+  title,
+  description,
+  tags = [],
+  repoLink,
+  liveLink,
+  className = "",
+}) => {
   return (
-    <div className="w-lg max-w-4xl mx-auto bg-[#0f172a] rounded-2xl overflow-hidden border border-[#1e293b] shadow-md">
+    <div
+      className={`transition-transform duration-300 hover:scale-[1.015] w-96 sm:w-lg max-w-4xl mx-auto bg-[#BEDDE6] backdrop-blur-md rounded-2xl overflow-hidden border border-white hover:border-[#1e293b] shadow-md ${className} `}
+    >
       {/* Image Preview */}
-      <div className="w-full h-64 bg-black overflow-hidden">
+      <div className="w-full h-52 sm:h-64 bg-black overflow-hidden">
         <img
-          src="/images/sharedrop-preview.png" // Change to your actual image path
-          alt="ShareDrop Preview"
-          className="w-full h-full object-cover"
+          src={image}
+          alt={`${title} Preview`}
+          className="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105 cursor-target"
         />
       </div>
 
       {/* Content Section */}
-      <div className="p-6 text-white space-y-4">
-        <span className="inline-block text-blue-400 text-xl">{"< />"}</span>
-        <h2 className="text-2xl font-bold">File Sharing App</h2>
-        <p className="text-gray-400 text-sm">
-          file sharing app within the same network
+      <div className="p-4 sm:p-6 text-white space-y-3 sm:space-y-4">
+        <span className="inline-block text-black text-lg sm:text-xl">
+          {"< />"}
+        </span>
+        <h2 className="text-xl sm:text-3xl text-black font-bold font-goldman cursor-target">
+          {title}
+        </h2>
+        <p className="text-black text-sm sm:text-base font-intel">
+          {description}
         </p>
 
-        <div className="flex flex-wrap gap-2">
-          {["React", "TypeScript", "Next.js", "Socket"].map((tech) => (
+        {/* Tech Tags */}
+        <div className="flex flex-wrap gap-2 ">
+          {tags.map((tech) => (
             <span
               key={tech}
-              className="bg-[#1e293b] px-3 py-1 rounded-full text-sm"
+              className="bg-[#1e293b] px-3 py-1 rounded-full text-xs sm:text-sm font-intel cursor-target"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        <div className="flex items-center gap-6 pt-2">
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white hover:text-gray-300"
-          >
-            <FaGithub className="text-lg" />
-            Code
-          </a>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-blue-400 hover:text-blue-300"
-          >
-            <FiExternalLink className="text-lg" />
-            Live Demo
-          </a>
+        {/* Links */}
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2">
+          {repoLink && (
+            <a
+              href={repoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-black hover:text-gray-700 text-sm sm:text-base font-intel cursor-target"
+            >
+              <FaGithub className="text-base sm:text-lg" />
+              Code
+            </a>
+          )}
+          {liveLink && (
+            <a
+              href={liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-[#3A3480] hover:text-[#2D2376] text-sm sm:text-base font-intel cursor-target"
+            >
+              <FiExternalLink className="text-base sm:text-lg" />
+              Live Demo
+            </a>
+          )}
         </div>
       </div>
     </div>

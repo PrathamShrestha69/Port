@@ -1,24 +1,85 @@
-import React from "react";
+import React, { useRef } from "react";
 import Button from "../components/Button.jsx";
-import ProjectCard from "../components/ProjectCard.jsx";
 import ProjectVCard from "../components/ProjectVCard.jsx";
+import project from "../constant/project.js";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/all";
+import { div } from "motion/react-client";
 
 const Projects = () => {
+  const ScrollRef = useRef();
+  useGSAP(() => {
+    const everything = gsap.utils.toArray(ScrollRef.current.children);
+    const SplitH1 = new SplitText("#title", { type: "lines" });
+    const Splitspan = new SplitText("#span", { type: "lines" });
+    gsap.from(SplitH1.lines, {
+      opacity: 0,
+      yPercent: 200,
+      duration: 1.8,
+      ease: "expo.inOut",
+      stagger: 0.05,
+    });
+    gsap.from(Splitspan.lines, {
+      opacity: 0,
+      yPercent: 200,
+      duration: 1.8,
+      ease: "expo.inOut",
+      stagger: 0.05,
+    });
+    everything.forEach(
+      (every) => {
+        gsap.fromTo(
+          every,
+          {
+            opacity: 0,
+            yPercent: 100,
+          },
+          { yPercent: 0, opacity: 1, delay: 1.5, ease: "power1.inOut" }
+        );
+      },
+      { scope: ScrollRef }
+    );
+  });
+
   return (
     <div className="relative overflow-x-hidden overflow-y-hidden">
       <div>
-        <h1>My Projects</h1>
-        <span>
+        <h1
+          id="title"
+          className="text-3xl lg:text-3xl font-goldman font-extrabold"
+        >
+          My Projects
+        </h1>
+        <span
+          id="span"
+          className="font-intel text-xl lg:text-xl text-justify lg:text-justify"
+        >
           Each project below reflects my passion for building sleek, responsive,
           and performance-focused web applications. From interactive UI
           components to full-stack solutions, I've focused on clean code, smooth
           animations, and real-world usability using React, Tailwind CSS, GSAP,
-          and more.
+          Nodejs, MongoDB and more.
         </span>
       </div>
-      <div>
-        <ProjectCard />
-        <ProjectVCard />
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 gap-7 py-10 max-w-6xl mx-auto"
+        ref={ScrollRef}
+      >
+        {project.map((proj, index) => (
+          <div>
+            <ProjectVCard
+              key={index}
+              image={proj.image}
+              title={proj.name}
+              description={proj.projectDesc}
+              tags={proj.tags}
+              repoLink={proj.repo}
+              liveLink={proj.web}
+              className={"h-full"}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
