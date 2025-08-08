@@ -14,11 +14,12 @@ const Projects = () => {
     const SplitH1 = new SplitText("#title", { type: "lines" });
     const Splitspan = new SplitText("#span", { type: "lines" });
     gsap.from(SplitH1.lines, {
-      opacity: 0,
+      opacity: 1,
       yPercent: 200,
       duration: 1.8,
-      ease: "expo.inOut",
+      ease: "back.inOut",
       stagger: 0.05,
+      scale: 1.8,
     });
     gsap.from(Splitspan.lines, {
       opacity: 0,
@@ -26,16 +27,23 @@ const Projects = () => {
       duration: 1.8,
       ease: "expo.inOut",
       stagger: 0.05,
+      scale: 1.8,
     });
+
     everything.forEach(
       (every) => {
         gsap.fromTo(
           every,
           {
             opacity: 0,
-            yPercent: 100,
+            yPercent: 200,
           },
-          { yPercent: 0, opacity: 1, delay: 1.5, ease: "power1.inOut" }
+          {
+            yPercent: 0,
+            opacity: 1,
+            delay: 1.5,
+            ease: "back.inOut",
+          }
         );
       },
       { scope: ScrollRef }
@@ -43,7 +51,7 @@ const Projects = () => {
   });
 
   return (
-    <div className="relative overflow-x-hidden overflow-y-hidden">
+    <div className=" relative overflow-y-hidden">
       <div>
         <h1
           id="title"
@@ -53,7 +61,7 @@ const Projects = () => {
         </h1>
         <span
           id="span"
-          className="font-intel text-xl lg:text-xl text-justify lg:text-justify"
+          className="font-intel text-sm lg:text-xl text-justify lg:text-justify"
         >
           Each project below reflects my passion for building sleek, responsive,
           and performance-focused web applications. From interactive UI
@@ -63,20 +71,19 @@ const Projects = () => {
         </span>
       </div>
       <div
-        className="grid grid-cols-1 md:grid-cols-2 gap-7 py-10 max-w-6xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-20 py-10 max-w-6xl mx-auto "
         ref={ScrollRef}
       >
         {project.map((proj, index) => (
-          <div>
+          <div key={index}>
             <ProjectVCard
-              key={index}
               image={proj.image}
               title={proj.name}
               description={proj.projectDesc}
               tags={proj.tags}
               repoLink={proj.repo}
               liveLink={proj.web}
-              className={"h-full"}
+              className={"h-full "}
             />
           </div>
         ))}

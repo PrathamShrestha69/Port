@@ -14,7 +14,7 @@ const ProjectVCard = ({
 }) => {
   return (
     <div
-      className={`transition-transform duration-300 hover:scale-[1.015] w-96 sm:w-lg max-w-4xl mx-auto bg-[#BEDDE6] backdrop-blur-md rounded-2xl overflow-hidden border border-white hover:border-[#1e293b] shadow-md ${className} `}
+      className={`transition-transform duration-300 hover:scale-[1.015] sm:w-80 lg:w-full max-w-4xl mx-auto bg-[#BEDDE6] backdrop-blur-md rounded-2xl overflow-hidden border border-white hover:border-[#1e293b] shadow-md ${className} `}
     >
       {/* Image Preview */}
       <div className="w-full h-52 sm:h-64 bg-black overflow-hidden">
