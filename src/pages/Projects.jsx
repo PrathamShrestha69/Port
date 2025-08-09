@@ -14,20 +14,19 @@ const Projects = () => {
     const SplitH1 = new SplitText("#title", { type: "lines" });
     const Splitspan = new SplitText("#span", { type: "lines" });
     gsap.from(SplitH1.lines, {
-      opacity: 1,
+      opacity: 0,
       yPercent: 200,
-      duration: 1.8,
+      duration: 1,
       ease: "back.inOut",
       stagger: 0.05,
-      scale: 1.8,
     });
     gsap.from(Splitspan.lines, {
       opacity: 0,
       yPercent: 200,
-      duration: 1.8,
+      duration: 1.1,
       ease: "expo.inOut",
       stagger: 0.05,
-      scale: 1.8,
+      delay: 1.2,
     });
 
     everything.forEach(
@@ -41,8 +40,9 @@ const Projects = () => {
           {
             yPercent: 0,
             opacity: 1,
-            delay: 1.5,
-            ease: "back.inOut",
+            delay: 2.3,
+            stagger: 0.05,
+            ease: "expo.out",
           }
         );
       },

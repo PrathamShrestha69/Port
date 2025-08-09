@@ -9,13 +9,19 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <header className="sticky top-20 mt-4 z-50 bg-transparent backdrop-blur-md border-none shadow-none rounded-2xl">
+      <header
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(216, 255, 250, 0.3), rgba(141, 238, 226, 0.3))",
+        }}
+        className="sticky top-20 mt-4 z-50 bg-transparent backdrop-blur-md border-none shadow-none rounded-2xl"
+      >
         <nav className="mx-auto max-w-7xl sm:px-6 lg:px-6">
           <div className="flex h-20 items-center justify-between px-3">
             {/* name */}
             <Link
               to="/"
-              className="font-playwrite-pl font-extrabold text-2xl  text-slate-800 transition hover:text-teal-600 text-flicker-in-glow-normal hover:text-flicker-in-glow-normal cursor-target"
+              className="font-playwrite-pl font-extrabold text-2xl  text-slate-800 transition hover:text-teal-600 text-flicker-in-glow-normal hover:text-flicker-in-glow-normal lg:cursor-target"
               onClick={() => setOpen(!open)}
             >
               Pratham Shrestha
